@@ -10,12 +10,12 @@ from torchtext import datasets
 from torch.utils import data
 
 pickle_path = "../Pickles/"
-our_training_path = "../Data/MELD_train_efr.json"
-our_testing_path = "../Data/MELD_test_efr.json"
+our_training_path = "../Data/MELD_train_efr_singles.csv"
+our_testing_path = "../Data/MELD_test_efr_singles.csv"
 save_path = pickle_path
 
-our_training_csv = pd.read_json(our_training_path)
-our_testing_csv = pd.read_json(our_testing_path)
+our_training_csv = pd.read_csv(our_training_path)
+our_testing_csv = pd.read_csv(our_testing_path)
 
 with open(pickle_path+"idx2utt.pickle","rb") as f:
     idx2utt = pickle.load(f)

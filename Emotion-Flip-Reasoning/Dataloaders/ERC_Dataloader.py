@@ -54,7 +54,7 @@ for utt,emo,sp,ann in zip(all_utterances,all_emotions,all_speakers,all_annotatio
 utts = list(set(f_utterances))
 idx2utt = {}
 utt2idx = {}
-ctr = 1
+ctr = 1  # NOTE: should this be 0?
 
 for utt in utts:
   idx2utt[ctr] = utt
@@ -452,44 +452,46 @@ final_speaker_emotions = {}
 final_speaker_indices = {}
 final_utt_len = {}
 
-d_id = 0
-for d,dialogue,emo,trig,n_nn in zip(X_train_d_id,X_train,y_train_emo,y_train_flip,y_train_emo_lvl1):
-    final_speaker_info[d] = global_speaker_info[d]
-    final_speaker_dialogues[d] = speaker_dialogues[d]
-    final_speaker_emotions[d] = speaker_emotions[d]
-    final_speaker_indices[d] = speaker_indices[d]
-    final_utt_len[d] = utt_len[d]
-    
-    X_data.append((d,dialogue))
-    y_data.append((d,emo,trig,n_nn))
-    my_data.append((d,dialogue,emo,trig,n_nn))
-    
-    X_d_id.append(d)
-    X.append(dialogue)
-    y_emo.append(emo)
-    y_flip.append(trig)
-    y_emo_lvl1.append(n_nn)
-    d_id += 1
+# ----- Keep getting issues so not going to use. Not required for EFR
 
-print("d_id -> ",d_id)
-
-for d,dialogue,emo,trig,n_nn in zip(X_test_d_id,X_test,y_test_emo,y_test_flip,y_test_emo_lvl1):
-    final_speaker_info[d_id] = global_speaker_info_test[d]
-    final_speaker_dialogues[d_id] = speaker_dialogues_test[d]
-    final_speaker_emotions[d_id] = speaker_emotions_test[d]
-    final_speaker_indices[d_id] = speaker_indices_test[d]
-    final_utt_len[d_id] = utt_len_test[d]
-    
-    X_data.append((d_id,dialogue))
-    y_data.append((d_id,emo,trig,n_nn))
-    my_data.append((d_id,dialogue,emo,trig,n_nn))
-    
-    X_d_id.append(d_id)
-    X.append(dialogue)
-    y_emo.append(emo)
-    y_flip.append(trig)
-    y_emo_lvl1.append(n_nn)
-    d_id += 1
+# d_id = 0
+# for d,dialogue,emo,trig,n_nn in zip(X_train_d_id,X_train,y_train_emo,y_train_flip,y_train_emo_lvl1):
+#     final_speaker_info[d] = global_speaker_info[d]
+#     final_speaker_dialogues[d] = speaker_dialogues[d]
+#     final_speaker_emotions[d] = speaker_emotions[d]
+#     final_speaker_indices[d] = speaker_indices[d]
+#     final_utt_len[d] = utt_len[d]
+#
+#     X_data.append((d,dialogue))
+#     y_data.append((d,emo,trig,n_nn))
+#     my_data.append((d,dialogue,emo,trig,n_nn))
+#
+#     X_d_id.append(d)
+#     X.append(dialogue)
+#     y_emo.append(emo)
+#     y_flip.append(trig)
+#     y_emo_lvl1.append(n_nn)
+#     d_id += 1
+#
+# print("d_id -> ",d_id)
+#
+# for d,dialogue,emo,trig,n_nn in zip(X_test_d_id,X_test,y_test_emo,y_test_flip,y_test_emo_lvl1):
+#     final_speaker_info[d_id] = global_speaker_info_test[d]
+#     final_speaker_dialogues[d_id] = speaker_dialogues_test[d]
+#     final_speaker_emotions[d_id] = speaker_emotions_test[d]
+#     final_speaker_indices[d_id] = speaker_indices_test[d]
+#     final_utt_len[d_id] = utt_len_test[d]
+#
+#     X_data.append((d_id,dialogue))
+#     y_data.append((d_id,emo,trig,n_nn))
+#     my_data.append((d_id,dialogue,emo,trig,n_nn))
+#
+#     X_d_id.append(d_id)
+#     X.append(dialogue)
+#     y_emo.append(emo)
+#     y_flip.append(trig)
+#     y_emo_lvl1.append(n_nn)
+#     d_id += 1
 
 ##################
 ### Saving everything
